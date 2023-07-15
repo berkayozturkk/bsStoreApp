@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Repositories.Contracts;
 using Services.Contracs;
 
@@ -9,10 +10,11 @@ namespace Services
         private readonly Lazy<IBookService> _bookService;
 
         public ServiceManager(IRepositoryManager repositoryManager
-            ,ILoggerService logger)
+            ,ILoggerService logger
+            ,IMapper mapper)
         {
             _bookService = new Lazy<IBookService>(()
-                => new BookManager(repositoryManager, logger));
+                => new BookManager(repositoryManager, logger, mapper));
         }
 
         public IBookService BookService => _bookService.Value;

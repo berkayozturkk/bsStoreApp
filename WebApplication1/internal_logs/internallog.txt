@@ -20,3 +20,25 @@
 2023-07-15 18:37:56.4786 Info Message Template Auto Format enabled
 2023-07-15 18:37:56.5749 Info Registered target NLog.Targets.FileTarget(Name=logfile)
 2023-07-15 18:37:56.6135 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:06:13.8010 Info Message Template Auto Format enabled
+2023-07-15 19:06:13.9471 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:06:13.9747 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:07:20.7254 Info Message Template Auto Format enabled
+2023-07-15 19:07:20.9388 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:07:20.9801 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:07:42.3177 Info AppDomain Shutting down. LogFactory closing...
+2023-07-15 19:07:42.3530 Info LogFactory has been closed.
+2023-07-15 19:10:05.5249 Info Message Template Auto Format enabled
+2023-07-15 19:10:05.6646 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:10:05.7203 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:10:34.4978 Info Message Template Auto Format enabled
+2023-07-15 19:10:34.6500 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:10:34.7024 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:10:59.4937 Info AppDomain Shutting down. LogFactory closing...
+2023-07-15 19:10:59.5219 Info LogFactory has been closed.
+2023-07-15 19:11:04.7352 Info Message Template Auto Format enabled
+2023-07-15 19:11:05.0072 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:11:05.0536 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config
+2023-07-15 19:11:27.5916 Info Message Template Auto Format enabled
+2023-07-15 19:11:27.6947 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-07-15 19:11:27.7337 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Software\Project\bsStoreApp\WebApplication1\nLog.config

@@ -2,6 +2,7 @@ using WebApplication1.Extentions;
 using NLog;
 using Services.Contracs;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddControllers(config =>
 .AddCustomCsvFormatter()
 .AddXmlDataContractSerializerFormatters()
 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+
+builder.Services.AddScoped<ValidationFilterAttribute>(); //IoC
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

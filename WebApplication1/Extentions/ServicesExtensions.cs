@@ -5,6 +5,7 @@ using Repositories.Contracts;
 using Repositories.EFCore;
 using Services;
 using Services.Contracs;
+using System.Runtime.CompilerServices;
 
 namespace WebApplication1.Extentions
 {
@@ -27,6 +28,19 @@ namespace WebApplication1.Extentions
         {
             services.AddScoped<ValidationFilterAttribute>();
             services.AddSingleton<LogFilterAttribute>();
+        }
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPoliciy", builder =>
+                    builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithExposedHeaders("X-Pagination")
+                );
+            });
         }
     }
 }

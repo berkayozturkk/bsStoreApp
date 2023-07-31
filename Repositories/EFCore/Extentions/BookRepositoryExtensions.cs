@@ -22,7 +22,10 @@ namespace Repositories.EFCore.Extentions
                 return books;
             
             var lowerCaseTerm = searchTerm.Trim().ToLower();
-            return books.Where(b => b.Title.ToLower().Contains(lowerCaseTerm));
+            return books
+                .Where(b => b.Title
+                .ToLower()
+                .Contains(lowerCaseTerm));
         }
     }
 }

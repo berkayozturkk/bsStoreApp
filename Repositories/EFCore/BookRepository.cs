@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.EFCore
 {
-    public class BookRepository : RepositoryBase<Book>, IBookRepository
+    public sealed class BookRepository : RepositoryBase<Book>, IBookRepository
     {
         public BookRepository(RepositoryContext context) : base(context)
         {
@@ -24,12 +24,10 @@ namespace Repositories.EFCore
         public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters,
             bool trackChanges)
         {
-            var books = await FindByCondition(b => 
-            ((b.Price >= bookParameters.MinPrice) &&
-            (b.Price <= bookParameters.MaxPrice))
-            ,trackChanges)
+            var books = await FindAll(trackChanges)
+                .FilterBooks(bookParameters.MinPrice,bookParameters.MaxPrice)
                 .OrderBy(b => b.Id)
-           .ToListAsync();
+                .ToListAsync();
 
             return PagedList<Book>.ToPagedList(books,bookParameters.PageNumber,bookParameters.PageSize);
         }

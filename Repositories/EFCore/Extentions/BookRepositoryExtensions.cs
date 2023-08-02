@@ -33,7 +33,7 @@ namespace Repositories.EFCore.Extentions
         public static IQueryable<Book> Sort(this IQueryable<Book> books,
             string orderByQueryString)
         {
-            if (!string.IsNullOrEmpty(orderByQueryString))
+            if (string.IsNullOrEmpty(orderByQueryString))
                 return books.OrderBy(b => b.Id);
 
             var orderParams = orderByQueryString.Trim().Split(',');
@@ -42,7 +42,6 @@ namespace Repositories.EFCore.Extentions
                 | BindingFlags.Instance);
 
             var orderQueryBuilder = new StringBuilder();
-
 
             // title ascending , price descending, id ascending,
             foreach (var param in orderParams)

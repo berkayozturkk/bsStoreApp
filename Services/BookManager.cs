@@ -7,9 +7,11 @@ using Repositories.Contracts;
 using Services.Contracs;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Services
 {
@@ -18,12 +20,15 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+        private readonly IDataShaper<BookDto> _shapper;
 
-        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
+
+        public BookManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper, IDataShaper<BookDto> shapper)
         {
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _shapper = shapper;
         }
 
         public async Task<BookDto> CreateOneBookAsync(BookDtoForInsertion bookDto)
@@ -42,7 +47,7 @@ namespace Services
             await _manager.SaveAsync();
         }
 
-        public async Task<(IEnumerable<BookDto> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, 
+        public async Task<(IEnumerable<ExpandoObject> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters, 
             bool trackChanges)
         {
             if (!bookParameters.ValidPriceRange)
@@ -50,9 +55,11 @@ namespace Services
 
             var booksWithMetaData = await _manager.Book.GetAllBooksAsync(bookParameters,trackChanges);
 
-             var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
+            var booksDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
 
-            return (booksDto, booksWithMetaData.MetaData);
+            var shapedData = _shapper.ShapeData(booksDto,bookParameters.Fields);
+
+            return (books : shapedData,  booksWithMetaData.MetaData);
         }
 
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)
